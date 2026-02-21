@@ -1,281 +1,211 @@
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sameer | Data Analyst</title>
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+export default function SameerPortfolio() {
 
-<style>
+  const [selected, setSelected] = useState(null);
+  const [hideImage, setHideImage] = useState(false);
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,sans-serif;
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 120) {
+        setHideImage(true);
+      } else {
+        setHideImage(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const projects = [
+    {
+      title: "Customer Churn Prediction",
+      desc: "ML model predicting telecom churn",
+    },
+    {
+      title: "Sales Forecasting",
+      desc: "SARIMA time series forecasting",
+    },
+    {
+      title: "Sentiment Analysis",
+      desc: "NLP sentiment classification project",
+    },
+  ];
+
+  return (
+
+    <div style={styles.container}>
+
+      {/* LEFT SIDE */}
+
+      <div style={styles.left}>
+
+        <AnimatePresence>
+          {!hideImage && (
+            <motion.img
+              src="https://via.placeholder.com/300x350"
+              style={styles.image}
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.4 }}
+            />
+          )}
+        </AnimatePresence>
+
+        <motion.div
+          animate={{
+            y: hideImage ? -60 : 0,
+            scale: hideImage ? 0.95 : 1,
+          }}
+          transition={{ duration: 0.4 }}
+        >
+          <h1 style={styles.name}>Sameer</h1>
+          <p style={styles.title}>Data Analyst & ML Dev.</p>
+        </motion.div>
+
+      </div>
+
+      {/* RIGHT SIDE APP PANEL */}
+
+      <div style={styles.right}>
+
+        {!selected && (
+          <div>
+
+            <h2 style={styles.heading}>Projects</h2>
+
+            {projects.map((proj, i) => (
+
+              <div
+                key={i}
+                style={styles.card}
+                onClick={() => setSelected(proj)}
+              >
+                {proj.title}
+              </div>
+
+            ))}
+
+          </div>
+        )}
+
+        {selected && (
+
+          <motion.div
+            initial={{ x: 100 }}
+            animate={{ x: 0 }}
+          >
+
+            <button
+              style={styles.back}
+              onClick={() => setSelected(null)}
+            >
+              ← Back
+            </button>
+
+            <h2 style={styles.heading}>{selected.title}</h2>
+
+            <p style={styles.desc}>
+              {selected.desc}
+            </p>
+
+          </motion.div>
+
+        )}
+
+      </div>
+
+    </div>
+  );
 }
 
-body{
-background:#0d0d0d;
-color:white;
-}
 
-/* NAVBAR */
+const styles = {
 
-nav{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-padding:12px 30px;
-border-radius:50px;
-}
+  container: {
 
-nav a{
-color:#aaa;
-margin:0 15px;
-text-decoration:none;
-font-size:14px;
-}
+    display: "flex",
+    height: "200vh",
+    background: "#041C18",
 
-nav a:hover{
-color:white;
-}
+  },
 
-/* HERO */
+  left: {
 
-.hero{
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-padding:40px;
-gap:60px;
-}
+    width: "50%",
+    position: "fixed",
+    left: 0,
+    top: "20%",
+    paddingLeft: "80px",
+    color: "#D4AF37",
 
-/* CARD */
+  },
 
-.card{
+  right: {
 
-background:#161616;
-padding:30px;
-border-radius:20px;
-text-align:center;
-width:280px;
+    width: "45%",
+    marginLeft: "55%",
+    marginTop: "100px",
+    background: "#062A24",
+    padding: "40px",
+    borderRadius: "20px",
+    boxShadow: "0 0 40px rgba(212,175,55,0.15)",
 
-}
+  },
 
-.card img{
-width:120px;
-border-radius:15px;
-margin-bottom:20px;
-}
+  image: {
 
-.card h2{
-margin-bottom:10px;
-}
+    width: "220px",
+    borderRadius: "12px",
+    marginBottom: "20px",
 
-.card p{
-color:#aaa;
-font-size:14px;
-}
+  },
 
-/* RIGHT */
+  name: {
 
-.right h1{
+    fontSize: "52px",
+    margin: 0,
 
-font-size:60px;
-font-weight:800;
+  },
 
-}
+  title: {
 
-.right span{
-color:#ff6b00;
-}
+    fontSize: "20px",
+    color: "#E6D3A3",
 
-.right p{
+  },
 
-color:#aaa;
-margin-top:20px;
-max-width:400px;
+  heading: {
 
-}
+    color: "#D4AF37",
 
-.stats{
+  },
 
-display:flex;
-gap:40px;
-margin-top:30px;
+  card: {
 
-}
+    padding: "20px",
+    marginTop: "20px",
+    background: "#0A3A32",
+    borderRadius: "12px",
+    cursor: "pointer",
 
-.stats div{
+  },
 
-font-size:20px;
+  desc: {
 
-}
+    color: "#EEE",
 
-/* PROJECTS */
+  },
 
-.projects{
+  back: {
 
-padding:100px;
-}
+    background: "none",
+    border: "none",
+    color: "#D4AF37",
+    cursor: "pointer",
+    marginBottom: "20px",
 
-.projects h2{
+  },
 
-margin-bottom:30px;
-
-}
-
-.project-card{
-
-background:#161616;
-padding:25px;
-margin-bottom:20px;
-border-radius:15px;
-transition:0.3s;
-
-}
-
-.project-card:hover{
-
-transform:translateY(-5px);
-background:#ff6b00;
-
-}
-
-.project-card a{
-
-color:white;
-text-decoration:none;
-font-size:18px;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<nav>
-
-<a href="#">Home</a>
-<a href="#">Projects</a>
-<a href="#">Contact</a>
-
-</nav>
-
-<section class="hero">
-
-<div class="card">
-
-<img src="https://via.placeholder.com/120">
-
-<h2>Sameer</h2>
-
-<p>Data Analyst & ML Specialist</p>
-
-</div>
-
-
-<div class="right">
-
-<h1>
-
-DATA ANALYST<br>
-<span>SAMEER</span>
-
-</h1>
-
-<p>
-
-I build machine learning models and dashboards that turn raw data into business intelligence.
-
-</p>
-
-<div class="stats">
-
-<div>
-
-4+<br>
-Projects
-
-</div>
-
-<div>
-
-Machine<br>
-Learning
-
-</div>
-
-<div>
-
-Power BI<br>
-Expert
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="projects">
-
-<h2>Projects</h2>
-
-<div class="project-card">
-
-<a href="https://github.com/yourusername/telco-churn-prediction">
-
-Customer Churn Prediction
-
-</a>
-
-</div>
-
-
-<div class="project-card">
-
-<a href="#">
-
-Sales Forecasting
-
-</a>
-
-</div>
-
-<div class="project-card">
-
-<a href="#">
-
-Sentiment Analysis
-
-</a>
-
-</div>
-
-<div class="project-card">
-
-<a href="#">
-
-Power BI Dashboard
-
-</a>
-
-</div>
-
-</section>
-
-</body>
-
-</html>
-```
+};
