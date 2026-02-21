@@ -3,106 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christopher Walker | Portfolio</title>
+    <title>Sameer | Data Analyst & ML Dev</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #1a1c23; color: #ffffff; }
-        .card { background-color: #252833; border-radius: 1rem; }
-        .inner-card { background-color: #2d313e; transition: transform 0.2s; }
-        .inner-card:hover { transform: translateY(-2px); }
-        .accent-orange { color: #ff8c42; }
+        body { 
+            background-color: #1a1c23; 
+            color: #ffffff; 
+            font-family: 'Inter', sans-serif;
+        }
+        .card { 
+            background-color: #252833; 
+            border-radius: 1.25rem; 
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .inner-card { 
+            background-color: #2d313e; 
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            border: 1px solid transparent;
+        }
+        .inner-card:hover { 
+            transform: translateY(-3px); 
+            border-color: #ff8c42;
+        }
+        .accent-color { color: #ff8c42; }
         .bg-accent { background-color: #ff8c42; }
+        
+        /* Subtle glow effect for the avatar */
+        .avatar-container::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 140, 66, 0.2);
+            z-index: -1;
+        }
     </style>
 </head>
-<body class="p-4 md:p-8 flex flex-col items-center">
+<body class="p-4 md:p-10 flex flex-col items-center min-h-screen">
 
-    <nav class="card p-3 mb-8 flex gap-6 justify-center w-full max-w-2xl">
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-solid fa-house"></i></a>
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-solid fa-user"></i></a>
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-solid fa-folder"></i></a>
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-solid fa-briefcase"></i></a>
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-solid fa-key"></i></a>
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-solid fa-pen-to-square"></i></a>
-        <a href="#" class="text-gray-400 hover:text-white"><i class="fa-solid fa-envelope"></i></a>
+    <nav class="card p-4 mb-8 flex gap-8 justify-center w-full max-w-2xl shadow-lg">
+        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-solid fa-house"></i></a>
+        <a href="#about" class="text-gray-400 hover:text-white transition-colors"><i class="fa-solid fa-user"></i></a>
+        <a href="#projects" class="text-gray-400 hover:text-white transition-colors"><i class="fa-solid fa-briefcase"></i></a>
+        <a href="#contact" class="text-gray-400 hover:text-white transition-colors"><i class="fa-solid fa-envelope"></i></a>
     </nav>
 
-    <section class="card p-8 w-full max-w-2xl mb-6 relative overflow-hidden">
-        <div class="flex flex-col md:flex-row items-center gap-6">
-            <div class="relative">
-                <img src="https://via.placeholder.com/120" alt="Profile" class="rounded-full border-4 border-gray-700 w-32 h-32 object-cover">
+    <section id="about" class="card p-8 w-full max-w-2xl mb-6 shadow-lg">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="relative avatar-container">
+                <img src="https://ui-avatars.com/api/?name=Sameer&background=ff8c42&color=fff&size=120" alt="Sameer Profile" class="rounded-full border-4 border-[#2d313e] w-32 h-32 object-cover relative z-10">
             </div>
-            <div class="text-center md:text-left">
-                <h1 class="text-3xl font-bold">Christopher Walker</h1>
-                <p class="text-gray-400 mb-4">Creative Web Designer</p>
-                <p class="text-gray-500 text-sm max-w-sm">
-                    Hi, I'm Christopher, a creative Web Designer building visually stunning websites.
+            <div class="text-center md:text-left flex-1">
+                <h1 class="text-3xl font-bold tracking-tight mb-1">Sameer</h1>
+                <p class="accent-color font-medium mb-4">Data Analyst & Machine Learning Developer</p>
+                <p class="text-gray-400 text-sm leading-relaxed mb-5">
+                    Machine learning engineer focused on predictive systems, business intelligence, and real-world deployment. I build ML systems that solve complex business problems.
                 </p>
-                <div class="flex gap-4 mt-4 justify-center md:justify-start">
-                    <a href="#" class="accent-orange hover:text-white"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="accent-orange hover:text-white"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="accent-orange hover:text-white"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" class="accent-orange hover:text-white"><i class="fa-brands fa-dribbble"></i></a>
+                <div class="flex gap-5 mt-4 justify-center md:justify-start">
+                    <a href="https://github.com/sameer" target="_blank" class="text-gray-400 hover:text-[#ff8c42] transition-colors text-xl"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:sameer@email.com" class="text-gray-400 hover:text-[#ff8c42] transition-colors text-xl"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#ff8c42] transition-colors text-xl"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="card p-8 w-full max-w-2xl mb-6">
-        <h2 class="text-xl font-bold mb-6 accent-orange">Projects</h2>
+    <section id="projects" class="card p-8 w-full max-w-2xl mb-6 shadow-lg">
+        <h2 class="text-xl font-bold mb-6 accent-color">Featured Projects</h2>
         
         <div class="space-y-4">
-            <div class="inner-card p-4 rounded-xl flex items-center justify-between cursor-pointer">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-gray-600 rounded-lg overflow-hidden">
-                        <img src="https://via.placeholder.com/50" alt="Project">
+            <a href="https://github.com/sameer" target="_blank" class="block">
+                <div class="inner-card p-4 rounded-xl flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-5">
+                        <div class="w-14 h-14 bg-gray-800 rounded-lg flex items-center justify-center shrink-0 border border-gray-700">
+                            <i class="fa-solid fa-network-wired text-[#ff8c42] text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-100">Telco Churn Prediction</h3>
+                            <p class="text-sm text-gray-400 mt-1 line-clamp-2">ML model predicting telecom customer churn with 79% recall. Built using Scikit-Learn and advanced feature engineering.</p>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold">Damas</h3>
-                        <p class="text-xs text-gray-400">Agency Framer Template</p>
-                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-500 ml-4 hidden md:block"></i>
                 </div>
-                <i class="fa-solid fa-arrow-right text-gray-500"></i>
-            </div>
+            </a>
 
-            <div class="inner-card p-4 rounded-xl flex items-center justify-between cursor-pointer">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-gray-600 rounded-lg overflow-hidden">
-                        <img src="https://via.placeholder.com/50" alt="Project">
+            <a href="#" class="block">
+                <div class="inner-card p-4 rounded-xl flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-5">
+                        <div class="w-14 h-14 bg-gray-800 rounded-lg flex items-center justify-center shrink-0 border border-gray-700">
+                            <i class="fa-solid fa-chart-line text-[#ff8c42] text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-100">Business Intelligence Dashboard</h3>
+                            <p class="text-sm text-gray-400 mt-1 line-clamp-2">Automated reporting and forecasting analytics for scalable business solutions.</p>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold">Najm</h3>
-                        <p class="text-xs text-gray-400">SaaS Framer Template</p>
-                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-500 ml-4 hidden md:block"></i>
                 </div>
-                <i class="fa-solid fa-arrow-right text-gray-500"></i>
-            </div>
-
-            <div class="inner-card p-4 rounded-xl flex items-center justify-between cursor-pointer">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-gray-600 rounded-lg overflow-hidden">
-                        <img src="https://via.placeholder.com/50" alt="Project">
-                    </div>
-                    <div>
-                        <h3 class="font-bold">Revo</h3>
-                        <p class="text-xs text-gray-400">Free Framer Template</p>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right text-gray-500"></i>
-            </div>
+            </a>
         </div>
     </section>
 
-    <section class="card p-8 w-full max-w-2xl">
-        <h2 class="text-xl font-bold mb-6 accent-orange">Services</h2>
-        <div class="inner-card p-4 rounded-xl flex items-center justify-between cursor-pointer">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-circle-info text-black text-xl"></i>
+    <section id="contact" class="card p-8 w-full max-w-2xl shadow-lg mb-10">
+        <h2 class="text-xl font-bold mb-6 accent-color">Specializations</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="inner-card p-4 rounded-xl flex items-center gap-4">
+                <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-brain text-black"></i>
                 </div>
-                <h3 class="font-bold">Custom Web Design</h3>
+                <h3 class="font-semibold text-sm">Predictive Modeling</h3>
             </div>
-            <i class="fa-solid fa-arrow-right text-gray-500"></i>
+            
+            <div class="inner-card p-4 rounded-xl flex items-center gap-4">
+                <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-chart-pie text-black"></i>
+                </div>
+                <h3 class="font-semibold text-sm">Forecasting & Analytics</h3>
+            </div>
         </div>
     </section>
 
