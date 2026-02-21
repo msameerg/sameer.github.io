@@ -1,60 +1,160 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Sameer | Data Analyst Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sameer | Data Analyst</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 
-body {
-    background-color: #0d1117;
-    color: #e6edf3;
-    font-family: Arial;
-    margin: 0;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
 }
 
-header {
-    background-color: #161b22;
-    padding: 30px;
-    text-align: center;
+body{
+background:#0d0d0d;
+color:white;
 }
 
-h1 {
-    margin: 0;
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:12px 30px;
+border-radius:50px;
 }
 
-section {
-    padding: 30px;
+nav a{
+color:#aaa;
+margin:0 15px;
+text-decoration:none;
+font-size:14px;
 }
 
-.card {
-    background-color: #161b22;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 10px;
+nav a:hover{
+color:white;
 }
 
-button {
-    background-color: #238636;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+/* HERO */
+
+.hero{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+padding:40px;
+gap:60px;
 }
 
-button:hover {
-    background-color: #2ea043;
+/* CARD */
+
+.card{
+
+background:#161616;
+padding:30px;
+border-radius:20px;
+text-align:center;
+width:280px;
+
 }
 
-a {
-    color: #58a6ff;
-    text-decoration: none;
+.card img{
+width:120px;
+border-radius:15px;
+margin-bottom:20px;
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #161b22;
+.card h2{
+margin-bottom:10px;
+}
+
+.card p{
+color:#aaa;
+font-size:14px;
+}
+
+/* RIGHT */
+
+.right h1{
+
+font-size:60px;
+font-weight:800;
+
+}
+
+.right span{
+color:#ff6b00;
+}
+
+.right p{
+
+color:#aaa;
+margin-top:20px;
+max-width:400px;
+
+}
+
+.stats{
+
+display:flex;
+gap:40px;
+margin-top:30px;
+
+}
+
+.stats div{
+
+font-size:20px;
+
+}
+
+/* PROJECTS */
+
+.projects{
+
+padding:100px;
+}
+
+.projects h2{
+
+margin-bottom:30px;
+
+}
+
+.project-card{
+
+background:#161616;
+padding:25px;
+margin-bottom:20px;
+border-radius:15px;
+transition:0.3s;
+
+}
+
+.project-card:hover{
+
+transform:translateY(-5px);
+background:#ff6b00;
+
+}
+
+.project-card a{
+
+color:white;
+text-decoration:none;
+font-size:18px;
+
 }
 
 </style>
@@ -63,93 +163,119 @@ footer {
 
 <body>
 
-<header>
+<nav>
 
-<h1>Sameer</h1>
+<a href="#">Home</a>
+<a href="#">Projects</a>
+<a href="#">Contact</a>
 
-<p>Junior Data Analyst | Python | Power BI | Machine Learning</p>
+</nav>
 
-<a href="https://github.com/msameerg">
-<button>Visit My GitHub</button>
-</a>
-
-</header>
-
-
-<section>
-
-<h2>Skills</h2>
+<section class="hero">
 
 <div class="card">
 
-Python, Pandas, NumPy, Matplotlib, Scikit-learn  
-Power BI Dashboard Development  
-SQL Data Analysis  
-Machine Learning & Prediction  
+<img src="https://via.placeholder.com/120">
+
+<h2>Sameer</h2>
+
+<p>Data Analyst & ML Specialist</p>
+
+</div>
+
+
+<div class="right">
+
+<h1>
+
+DATA ANALYST<br>
+<span>SAMEER</span>
+
+</h1>
+
+<p>
+
+I build machine learning models and dashboards that turn raw data into business intelligence.
+
+</p>
+
+<div class="stats">
+
+<div>
+
+4+<br>
+Projects
+
+</div>
+
+<div>
+
+Machine<br>
+Learning
+
+</div>
+
+<div>
+
+Power BI<br>
+Expert
+
+</div>
+
+</div>
 
 </div>
 
 </section>
 
-
-<section>
+<section class="projects">
 
 <h2>Projects</h2>
 
-<div class="card">
+<div class="project-card">
 
-<h3>Customer Churn Prediction</h3>
+<a href="https://github.com/yourusername/telco-churn-prediction">
 
-<p>Machine learning model to predict customer churn.</p>
+Customer Churn Prediction
 
-</div>
-
-
-<div class="card">
-
-<h3>Sales Forecasting</h3>
-
-<p>Time series forecasting to predict future sales.</p>
+</a>
 
 </div>
 
 
-<div class="card">
+<div class="project-card">
 
-<h3>Sentiment Analysis</h3>
+<a href="#">
 
-<p>Analyzed customer reviews using NLP.</p>
+Sales Forecasting
+
+</a>
 
 </div>
 
-</section>
+<div class="project-card">
 
+<a href="#">
 
-<section>
+Sentiment Analysis
 
-<h2>Contact</h2>
+</a>
 
-<div class="card">
+</div>
 
-GitHub:  
-<a href="https://github.com/msameerg">
+<div class="project-card">
 
-github.com/msameerg
+<a href="#">
+
+Power BI Dashboard
 
 </a>
 
 </div>
 
 </section>
-
-
-<footer>
-
-Portfolio Website | Sameer | 2026
-
-</footer>
-
 
 </body>
 
 </html>
+```
