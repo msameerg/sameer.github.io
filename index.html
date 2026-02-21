@@ -1,211 +1,337 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sameer | Data Analyst & ML Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-export default function SameerPortfolio() {
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-  const [selected, setSelected] = useState(null);
-  const [hideImage, setHideImage] = useState(false);
+  <style>
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 120) {
-        setHideImage(true);
-      } else {
-        setHideImage(false);
+    :root{
+      --royal-green:#041c18;
+      --royal-green-light:#0b2f28;
+      --gold:#d4af37;
+      --beige:#f5e6c8;
+      --white:#ffffff;
+      --glass:rgba(255,255,255,0.05);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--royal-green);
+      color:var(--beige);
+      overflow-x:hidden;
+    }
+
+
+    /* MAIN GRID */
+
+    .container{
+      display:flex;
+      height:100vh;
+    }
+
+
+    /* LEFT SIDE */
+
+    .left{
+      width:45%;
+      padding:80px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      position:relative;
+    }
+
+
+    .identity{
+      position:sticky;
+      top:100px;
+      transition:all .5s ease;
+    }
+
+
+    .identity img{
+      width:140px;
+      border-radius:50%;
+      margin-bottom:25px;
+      transition:all .5s ease;
+    }
+
+
+    .identity.shrink img{
+      opacity:0;
+      transform:translateY(-20px);
+    }
+
+
+    h1{
+      font-family:'Playfair Display',serif;
+      font-size:52px;
+      color:var(--gold);
+    }
+
+
+    h2{
+      font-weight:300;
+      margin-top:10px;
+      color:var(--beige);
+    }
+
+
+    nav{
+      margin-top:40px;
+    }
+
+
+    nav a{
+      display:block;
+      margin-bottom:15px;
+      color:var(--beige);
+      text-decoration:none;
+      transition:.3s;
+    }
+
+
+    nav a:hover{
+      color:var(--gold);
+      transform:translateX(8px);
+    }
+
+
+    /* RIGHT SIDE APP PANEL */
+
+    .right{
+      width:55%;
+      background:var(--royal-green-light);
+      border-left:1px solid rgba(212,175,55,0.3);
+      overflow-y:auto;
+      padding:60px;
+    }
+
+
+    .card{
+      background:var(--glass);
+      padding:30px;
+      margin-bottom:30px;
+      border-radius:12px;
+      cursor:pointer;
+      transition:.4s;
+      border:1px solid transparent;
+    }
+
+
+    .card:hover{
+      border:1px solid var(--gold);
+      transform:translateX(-10px);
+    }
+
+
+    .detail{
+      position:fixed;
+      left:-100%;
+      top:0;
+      height:100%;
+      width:45%;
+      background:var(--royal-green-light);
+      padding:80px;
+      transition:.6s;
+      overflow:auto;
+      z-index:10;
+    }
+
+
+    .detail.active{
+      left:0;
+    }
+
+
+    .close{
+      margin-bottom:30px;
+      cursor:pointer;
+      color:var(--gold);
+    }
+
+
+    footer{
+      margin-top:60px;
+      font-size:14px;
+      opacity:.6;
+    }
+
+
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:6px;
+    }
+
+
+    ::-webkit-scrollbar-thumb{
+      background:var(--gold);
+    }
+
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .container{
+        flex-direction:column;
       }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  const projects = [
-    {
-      title: "Customer Churn Prediction",
-      desc: "ML model predicting telecom churn",
-    },
-    {
-      title: "Sales Forecasting",
-      desc: "SARIMA time series forecasting",
-    },
-    {
-      title: "Sentiment Analysis",
-      desc: "NLP sentiment classification project",
-    },
-  ];
+      .left,.right{
+        width:100%;
+      }
 
-  return (
+      .detail{
+        width:100%;
+      }
 
-    <div style={styles.container}>
+    }
 
-      {/* LEFT SIDE */}
 
-      <div style={styles.left}>
+  </style>
 
-        <AnimatePresence>
-          {!hideImage && (
-            <motion.img
-              src="https://via.placeholder.com/300x350"
-              style={styles.image}
-              initial={{ opacity: 1 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.4 }}
-            />
-          )}
-        </AnimatePresence>
+</head>
+<body>
 
-        <motion.div
-          animate={{
-            y: hideImage ? -60 : 0,
-            scale: hideImage ? 0.95 : 1,
-          }}
-          transition={{ duration: 0.4 }}
-        >
-          <h1 style={styles.name}>Sameer</h1>
-          <p style={styles.title}>Data Analyst & ML Dev.</p>
-        </motion.div>
 
-      </div>
+<div class="container">
 
-      {/* RIGHT SIDE APP PANEL */}
 
-      <div style={styles.right}>
+  <!-- LEFT -->
 
-        {!selected && (
-          <div>
+  <div class="left">
 
-            <h2 style={styles.heading}>Projects</h2>
+    <div class="identity" id="identity">
 
-            {projects.map((proj, i) => (
+      <img src="https://via.placeholder.com/200" alt="Sameer">
 
-              <div
-                key={i}
-                style={styles.card}
-                onClick={() => setSelected(proj)}
-              >
-                {proj.title}
-              </div>
+      <h1>Sameer</h1>
 
-            ))}
+      <h2>Data Analyst & ML Developer</h2>
 
-          </div>
-        )}
 
-        {selected && (
+      <nav>
 
-          <motion.div
-            initial={{ x: 100 }}
-            animate={{ x: 0 }}
-          >
+        <a href="#">Projects</a>
 
-            <button
-              style={styles.back}
-              onClick={() => setSelected(null)}
-            >
-              ← Back
-            </button>
+        <a href="#">About</a>
 
-            <h2 style={styles.heading}>{selected.title}</h2>
+        <a href="#">Contact</a>
 
-            <p style={styles.desc}>
-              {selected.desc}
-            </p>
+      </nav>
 
-          </motion.div>
-
-        )}
-
-      </div>
 
     </div>
-  );
+
+
+  </div>
+
+
+
+  <!-- RIGHT -->
+
+  <div class="right" onscroll="scrollEffect()">
+
+
+    <div class="card" onclick="openDetail()">
+
+      <h3>Telco Customer Churn</h3>
+
+      <p>ML model predicting churn with recall optimization.</p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Customer Segmentation</h3>
+
+      <p>KMeans clustering for marketing insights.</p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Sales Forecasting</h3>
+
+      <p>SARIMA time series forecasting.</p>
+
+    </div>
+
+
+    <footer>
+
+      © Sameer Portfolio
+
+    </footer>
+
+
+  </div>
+
+
+</div>
+
+
+<!-- DETAIL PANEL -->
+
+<div class="detail" id="detail">
+
+  <div class="close" onclick="closeDetail()">← Back</div>
+
+
+  <h2>Telco Customer Churn</h2>
+
+
+  <p>
+
+    Placeholder project details.
+
+
+  </p>
+
+
+</div>
+
+
+<script>
+
+
+function openDetail(){
+
+  document.getElementById("detail").classList.add("active");
+
 }
 
 
-const styles = {
+function closeDetail(){
 
-  container: {
+  document.getElementById("detail").classList.remove("active");
 
-    display: "flex",
-    height: "200vh",
-    background: "#041C18",
+}
 
-  },
 
-  left: {
+function scrollEffect(){
 
-    width: "50%",
-    position: "fixed",
-    left: 0,
-    top: "20%",
-    paddingLeft: "80px",
-    color: "#D4AF37",
+  document.getElementById("identity").classList.add("shrink");
 
-  },
+}
 
-  right: {
 
-    width: "45%",
-    marginLeft: "55%",
-    marginTop: "100px",
-    background: "#062A24",
-    padding: "40px",
-    borderRadius: "20px",
-    boxShadow: "0 0 40px rgba(212,175,55,0.15)",
+</script>
 
-  },
 
-  image: {
-
-    width: "220px",
-    borderRadius: "12px",
-    marginBottom: "20px",
-
-  },
-
-  name: {
-
-    fontSize: "52px",
-    margin: 0,
-
-  },
-
-  title: {
-
-    fontSize: "20px",
-    color: "#E6D3A3",
-
-  },
-
-  heading: {
-
-    color: "#D4AF37",
-
-  },
-
-  card: {
-
-    padding: "20px",
-    marginTop: "20px",
-    background: "#0A3A32",
-    borderRadius: "12px",
-    cursor: "pointer",
-
-  },
-
-  desc: {
-
-    color: "#EEE",
-
-  },
-
-  back: {
-
-    background: "none",
-    border: "none",
-    color: "#D4AF37",
-    cursor: "pointer",
-    marginBottom: "20px",
-
-  },
-
-};
+</body>
+</html>
